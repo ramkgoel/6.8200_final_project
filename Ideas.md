@@ -17,10 +17,14 @@ Basically the way the idea of Q learning advanced in this direction seems to be:
 2. Double Deep Q learning
 3. Deep Reinforcement Learning with Double Q-learning
 4. Clipped Double Q-learning
+5. Implict Q-learning
 
 We can talk in our paper about how these advanced gradually occurred. Then we can try and make some improvements based on the original Double-DQN paper and see where that gets us. Then we can look into the Clipped DQN paper and see if our ideas help with that too. 
 
 We can come up with new experiments to try and test our ideas. In the original Double-DQN paper, they have an example of a roulette and some probabilistic estimator. We can come up with new ideas and environments to see how our ideas fare. 
+
+IDEA:
+Compare performace of 1-5 by implementing all of them and testing them on the same experiments.
 
 ----------------------------------------
 
