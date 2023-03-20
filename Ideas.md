@@ -17,7 +17,7 @@ Basically the way the idea of Q learning advanced in this direction seems to be:
 2. Double Deep Q learning
 3. Deep Reinforcement Learning with Double Q-learning
 4. Clipped Double Q-learning
-5. Implict Q-learning
+5. Implict Q-learning. Main idea of IQL seems to be using only sampled data to update Q values.
 
 We can talk in our paper about how these advanced gradually occurred. Then we can try and make some improvements based on the original Double-DQN paper and see where that gets us. Then we can look into the Clipped DQN paper and see if our ideas help with that too. 
 
@@ -25,8 +25,11 @@ We can come up with new experiments to try and test our ideas. In the original D
 
 IDEA:
 Compare performace of 1-5 by implementing all of them and testing them on the same experiments.
+Think about that remark in the original Double Q-learning paper. 
 
 ----------------------------------------
+
+A comparison of various advancements of Q-learning methods and potential furthering of some Q-learning ideas 
 
 - **Hypothesis** (Succinctly state your hypothesis)
 
