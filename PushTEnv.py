@@ -572,3 +572,5 @@ class PushTEnv(gym.Env):
         body.friction = 1
         self.space.add(body, shape1, shape2)
         return body
+
+
