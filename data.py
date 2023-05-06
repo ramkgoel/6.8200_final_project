@@ -177,43 +177,47 @@ class PushTStateDataset(torch.utils.data.Dataset):
 
 #@markdown ### **Dataset Demo**
 
-# download demonstration data from Google Drive
-dataset_path = "pusht_cchi_v7_replay.zarr.zip"
-#if not os.path.isfile(dataset_path):
-#    id = "1KY1InLurpMvJDRb14L9NlXT_fEsCvVUq&confirm=t"
-#    gdown.download(id=id, output=dataset_path, quiet=False)
+if __name__ == '__main__':
+    # download demonstration data from Google Drive
+    dataset_path = "pusht_cchi_v7_replay.zarr"
+    #if not os.path.isfile(dataset_path):
+    #    id = "1KY1InLurpMvJDRb14L9NlXT_fEsCvVUq&confirm=t"
+    #    gdown.download(id=id, output=dataset_path, quiet=False)
 
-# parameters
-pred_horizon = 16
-obs_horizon = 2
-action_horizon = 8
-#|o|o|                             observations: 2
-#| |a|a|a|a|a|a|a|a|               actions executed: 8
-#|p|p|p|p|p|p|p|p|p|p|p|p|p|p|p|p| actions predicted: 16
+    # parameters
+    pred_horizon = 16
+    obs_horizon = 2
+    action_horizon = 8
+    #|o|o|                             observations: 2
+    #| |a|a|a|a|a|a|a|a|               actions executed: 8
+    #|p|p|p|p|p|p|p|p|p|p|p|p|p|p|p|p| actions predicted: 16
 
-# create dataset from file
-dataset = PushTStateDataset(
-    dataset_path=dataset_path,
-    pred_horizon=pred_horizon,
-    obs_horizon=obs_horizon,
-    action_horizon=action_horizon
-)
-# save training data statistics (min, max) for each dim
-stats = dataset.stats
+    # create dataset from file
+    dataset = PushTStateDataset(
+        dataset_path=dataset_path,
+        pred_horizon=pred_horizon,
+        obs_horizon=obs_horizon,
+        action_horizon=action_horizon
+    )
+    # save training data statistics (min, max) for each dim
+    stats = dataset.stats
 
-# create dataloader
-dataloader = torch.utils.data.DataLoader(
-    dataset,
-    batch_size=256,
-    num_workers=1,
-    shuffle=True,
-    # accelerate cpu-gpu transfer
-    pin_memory=True, 
-    # don't kill worker process afte each epoch
-    persistent_workers=True 
-)
+    # create dataloader
+    dataloader = torch.utils.data.DataLoader(
+        dataset,
+        batch_size=256,
+        num_workers=1,
+        shuffle=True,
+        # accelerate cpu-gpu transfer
+        pin_memory=True, 
+        # don't kill worker process afte each epoch
+        persistent_workers=True 
+    )
 
-# visualize data in batch
-batch = next(iter(dataloader))
-print("batch['obs'].shape:", batch['obs'].shape)
-print("batch['action'].shape", batch['action'].shape)
+    # visualize data in batch
+    batch = next(iter(dataloader))
+    print("batch['obs'].shape:", batch['obs'].shape)
+    print("batch['action'].shape", batch['action'].shape)
+
+    #print(batch["obs"])
+    #print(batch["action"])
